@@ -82,15 +82,19 @@ public class GatewayService {
     	// business operations in the trade application so we mapped them into the micro
     	// services architecture
 	
+    	RunStatsDataBean quoteStatsData = null;
+    	RunStatsDataBean portfolioStatsData = null;
+    	RunStatsDataBean accountStatsData = null;
+    	
 		// Ask the microservices to reset their trades and return their usage data
                 try {
                         // Ask the microservices to reset their trades and return their usage data
                         quotesService.backupTrade(deleteAll);
-                        RunStatsDataBean quoteStatsData = quotesService.resetTrade(deleteAll);
+                        quoteStatsData = quotesService.resetTrade(deleteAll);
                         portfoliosService.backupTrade(deleteAll);
-                        RunStatsDataBean portfolioStatsData = portfoliosService.resetTrade(deleteAll);
+                        portfolioStatsData = portfoliosService.resetTrade(deleteAll);
                         accountsService.backupTrade(deleteAll);
-                        RunStatsDataBean accountStatsData = accountsService.resetTrade(deleteAll);
+                        accountStatsData = accountsService.resetTrade(deleteAll);
                 } catch (Exception e) {
                         quotesService.compensateResetTrade(deleteAll);
                         portfoliosService.compensateResetTrade(deleteAll);

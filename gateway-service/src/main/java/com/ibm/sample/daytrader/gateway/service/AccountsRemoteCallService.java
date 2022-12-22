@@ -83,6 +83,14 @@ public class AccountsRemoteCallService extends BaseRemoteCallService
     	RunStatsDataBean runStatsData = mapper.readValue(responseEntity,RunStatsDataBean.class);
     	return runStatsData; 
 	}
+	
+    public void backupTrade(boolean deleteAll) throws Exception
+    {
+    }
+
+    public void compensateResetTrade(boolean deleteAll) throws Exception
+    {
+    }
 
 	public boolean recreateDBTables() throws Exception 
 	{
